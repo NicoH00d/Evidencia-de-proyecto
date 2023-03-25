@@ -25,6 +25,7 @@ state = {'mark': None}
 """Set value hide to True so images start hidden."""
 hide = [True] * 64
 tap_count = 0
+match_count = 0
 
 
 def square(x, y):
@@ -77,6 +78,8 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        global match_count
+        match_count = match_count +1
 
 
 def draw():
@@ -115,3 +118,6 @@ onscreenclick(tap)
 draw()
 done()
 print("You tapped", tap_count, "times")
+print("You completed", match_count, "matches")
+if (match_count == 32):
+    print("You completed all the matches!")
