@@ -1,0 +1,5 @@
+Paulina Almada - A01710029
+
+Para este proyecto, trabajé con el juego de memoria. Primero, bajé el archivo original de freegames. Después, lo corregí basado en lo que regresó el comando flake8. Con una versión que seguía el estándar, jugé el juego varias veces y analicé el código para poder comentarlo y entender tanto la lógica como la estructura del mismo. Con este entendimiento, pude agregar tanto un contador de taps (utilizando un contador dentro del código que cuenta cuantas veces se llama la función activada por un click) y un sistema de detección de cuadros destapados (con un contador dentro del código que cuenta cuantos pares se han formado y, al llegar a 32, que es el número máximo de pares, indica que se han destapado todos).
+
+Además, pidió que comentara que le mencioné que cuando creé mi rama, ya se había hecho un merge con main de parte de otro compañero, por lo que sus commits aparecen en mi rama. Espero no me penalice tanto por esto.  
