@@ -10,7 +10,8 @@ Exercises
 """
 
 from random import choice       # Imports libraries.
-from turtle import *
+from turtle import Turtle, bgcolor, clear, goto, dot, up, update
+from turtle import ontimer, setup, hideturtle, tracer, done, listen, onkey
 
 from freegames import floor, vector
 
