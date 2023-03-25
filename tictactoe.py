@@ -48,7 +48,7 @@ def drawo(x, y):
     up()
     goto(x + 60, y + 30)    # Center circle in grid square.
     down()
-    circle(40)  # Change circle size..
+    circle(40)  # Change circle size.
 
 
 def floor(value):
@@ -71,6 +71,10 @@ state = {'player': 0}
 players = [drawx, drawo]
 
 
+# Create a list to simulate the grid where 'e' stands for empty.
+square = [['e', 'e', 'e'], ['e', 'e', 'e'], ['e', 'e', 'e']]
+
+
 def tap(x, y):
     """Draw an X or O shape in the square of the grid tapped by the player,
     updating then the game to switch to the next player.
@@ -80,13 +84,22 @@ def tap(x, y):
         y: The y-coordinate of the tapped square."""
     x = floor(x)
     y = floor(y)
-    player = state['player']
-    draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+
+    """Define cordinates of the tapped spot with row and columns in grid."""
+    row = int((y + 200)/133)
+    col = int((x + 200)/133)
+
+    """Check if the grid square is empty or not."""
+    if square[row][col] == 'e':
+        player = state['player']
+        draw = players[player]
+        draw(x, y)
+        update()
+        state['player'] = not player
+        square[row][col] = 'X' if player == 0 else 'O'
 
 
+"Initialize the game."
 setup(420, 420, 370, 0)  # Sets the size of the game window.
 hideturtle()
 tracer(False)
