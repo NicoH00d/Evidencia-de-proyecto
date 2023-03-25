@@ -16,14 +16,21 @@ from turtle import (addshape, begin_fill, clear, color, done, down,
 
 from freegames import path
 
+"""Set the car image revealed by playing as a variable."""
 car = path('car.gif')
+"""Populate the 8x8 grid with two sets of numbers up to 32."""
 tiles = list(range(32)) * 2
+"""Define mark as having a null value so no tiles appear as clicked."""
 state = {'mark': None}
+"""Set value hide to True so images start hidden."""
 hide = [True] * 64
 
 
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
+    """Receives: x and y integer values.
+    Draws a white square with black outline at (x, y).
+    This creates the grid to hide the picture.
+    """
     up()
     goto(x, y)
     down()
@@ -36,20 +43,30 @@ def square(x, y):
 
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
+    """Receives: x and y integer values.
+    Converts (x, y) coordinates to tiles index.
+    Used to locate specific tiles in the program.
+    """
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
+    """Receives: count integer value.
+    Converts tiles count to (x, y) coordinates.
+    """
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
+    """Receives: x and y integer values.
+    Update mark and hidden tiles based on tap.
+    """
     spot = index(x, y)
     mark = state['mark']
 
+    """If the user clicks tiles that do not match, it resets the tile.
+    Else, if the tiles match, it reveals the image beneath.
+    """
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
@@ -59,12 +76,13 @@ def tap(x, y):
 
 
 def draw():
-    """Draw image and tiles."""
+    """Draw image (car picture)."""
     clear()
     goto(0, 0)
     shape(car)
     stamp()
 
+    """Draw tiles (squares covering the picture)."""
     for count in range(64):
         if hide[count]:
             x, y = xy(count)
@@ -72,6 +90,7 @@ def draw():
 
     mark = state['mark']
 
+    """If a blank tile is clicked, it prints the number of the tile."""
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
