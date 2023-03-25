@@ -48,7 +48,7 @@ tiles = [
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-]       # Map shown as a list; works with tiles: 1 for blue tiles, and 0 for black tiles.
+]       # Map shown as a list; 1 for blue tiles, and 0 for black tiles.
 # fmt: on
 
 
@@ -166,7 +166,7 @@ def change(x, y):
 
 
 setup(420, 420, 370, 0)     # Display size and location at start.
-hideturtle()        
+hideturtle()
 tracer(False)
 writer.goto(160, 160)
 writer.color('white')
