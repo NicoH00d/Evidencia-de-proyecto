@@ -24,6 +24,7 @@ tiles = list(range(32)) * 2
 state = {'mark': None}
 """Set value hide to True so images start hidden."""
 hide = [True] * 64
+tap_count = 0
 
 
 def square(x, y):
@@ -61,6 +62,8 @@ def tap(x, y):
     """Receives: x and y integer values.
     Update mark and hidden tiles based on tap.
     """
+    global tap_count
+    tap_count = tap_count + 1
     spot = index(x, y)
     mark = state['mark']
 
@@ -69,6 +72,7 @@ def tap(x, y):
     """
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
+        tap_count = tap_count + 1
     else:
         hide[spot] = False
         hide[mark] = False
@@ -110,3 +114,4 @@ tracer(False)
 onscreenclick(tap)
 draw()
 done()
+print("You tapped", tap_count, "times")
