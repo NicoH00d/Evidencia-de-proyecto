@@ -5,8 +5,9 @@ Contains functions that draw the tic tac toe grid game and allows
 players "X" and "O" to draw on it while keeping game state updated.
 """
 
+# Imported functions from Turtle.
 from turtle import goto, circle, update, setup, hideturtle, tracer
-from turtle import up, down, onscreenclick, done
+from turtle import up, down, onscreenclick, done, color, pensize
 from freegames import line
 
 
@@ -24,8 +25,14 @@ def drawx(x, y):
     Args:
     x: The x-coordinate of the "X" shape.
     y: The y-coordinate of the "X" shape."""
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
+
+    # Change color and thicken border line.
+    color('red')
+    pensize(5)
+
+    # Modify cross size and center it in grid square.
+    line(x + 40, y + 40, x + 100, y + 100)
+    line(x + 40, y + 100, x + 100, y + 40)
 
 
 def drawo(x, y):
@@ -34,10 +41,14 @@ def drawo(x, y):
     Args:
     x: The x-coordinate of the "O" shape.
     y: The y-coordinate of the "O" shape."""
+
+    # Change color and thicken border line.
+    color('blue')
+    pensize(5)
     up()
-    goto(x + 67, y + 5)
+    goto(x + 60, y + 30)    # Center circle in grid square.
     down()
-    circle(62)
+    circle(40)  # Change circle size..
 
 
 def floor(value):
